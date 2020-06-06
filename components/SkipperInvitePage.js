@@ -76,7 +76,6 @@ const SkipperInvitePage = ({onChoose}) => {
 				<Text style={styles.inputBoxHeading}>I am going sailing on:</Text>
 				<DateInput date={date} onChange={onChange} />
 				<Button onPress={submit} title="Send invitation" />  	    	  
-				<Button onPress={() => onChoose(1)} title="Back" />  	    	  
 			</ScrollView>
 	)
 

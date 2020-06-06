@@ -6,15 +6,15 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 /**
  * 
  */
-const HomePage = ({onChoose}) => {
+const HomePage = ({navigation}) => {
 
 	return (
 			<View style={styles.container}>
 				<View style={styles.body}>
 					<Text>If you're a skipper and you want to invite crew to sail with you, press Skipper</Text>
-					<Button onPress={() => onChoose(2)} title="Skipper" />  	    	  
+					<Button onPress={() => navigation.navigate('SkipperInvite')} title="Skipper" />  	    	  
 						<Text>If you're a crew and you want to find a boat to sail on, press Crew</Text>
-						<Button onPress={() => onChoose(3)} title="Crew" />  	    	  
+						<Button onPress={() => navigation.navigate('ViewInvites')} title="Crew" />  	    	  
 				</View>
 			</View>
 	)

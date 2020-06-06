@@ -57,7 +57,6 @@ const ViewInvitesPage = ({onChoose}) => {
 			  				
 			  		)}
 			  	<View style={styles.backButton}>	
-			  		<Button  onPress={() => onChoose(1)} title="Back" />
 					  </View>
 			</View>
 	  )

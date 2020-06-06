@@ -5,23 +5,35 @@ import {HomePage} from './components/HomePage';
 import {ViewInvitesPage} from './components/ViewInvitesPage'; 
 import {TopBar} from './components/TopBar';
 import Constants from 'expo-constants';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
  
 export default function App() {
 	const [currentPage, onChangePage] = React.useState(1);
 
+	const Stack = createStackNavigator();
+
 	return (
-			<View style={styles.container}>
-			  <TopBar/>
-			{currentPage===1 && (
-					<HomePage onChoose={onChangePage}/> 
-			)}
-			{currentPage===2 && (
-					<SkipperInvitePage onChoose={onChangePage}/> 
-			)}
-			{currentPage===3 && (
-					<ViewInvitesPage onChoose={onChangePage}/> 
-			)}
-			</View>
+		<NavigationContainer initialRouteName="Home">
+			<Stack.Navigator>
+			<Stack.Screen
+          name="Home"
+          component={HomePage}
+          options={{ title: 'SailingBuddy' }}
+        />
+		<Stack.Screen
+          name="SkipperInvite"
+          component={SkipperInvitePage}
+          options={{ title: 'Skipper' }}
+        />
+		<Stack.Screen
+          name="ViewInvites"
+          component={ViewInvitesPage}
+          options={{ title: 'Crew' }}
+        />
+			</Stack.Navigator>
+			</NavigationContainer>
 	);
 }
 
