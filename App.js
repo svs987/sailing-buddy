@@ -1,19 +1,35 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import React, {useState} from 'react';
+import { StyleSheet, View } from 'react-native';
+import { SkipperInvitePage } from './components/SkipperInvitePage';
+import {HomePage} from './components/HomePage';
+import {ViewInvitesPage} from './components/ViewInvitesPage'; 
+import {TopBar} from './components/TopBar';
+import Constants from 'expo-constants';
+ 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+	const [currentPage, onChangePage] = React.useState(1);
+
+	return (
+			<View style={styles.container}>
+			  <TopBar/>
+			{currentPage===1 && (
+					<HomePage onChoose={onChangePage}/> 
+			)}
+			{currentPage===2 && (
+					<SkipperInvitePage onChoose={onChangePage}/> 
+			)}
+			{currentPage===3 && (
+					<ViewInvitesPage onChoose={onChangePage}/> 
+			)}
+			</View>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	  container: {
+	    flex: 1,
+	  },
+	});
+
+
+	

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "SailingBuddyApp",
-    "slug": "SailingBuddyApp",
+    "slug": "sailing-buddy",
     "platforms": [
       "ios",
       "android",
@@ -22,7 +22,26 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "supportsTablet": true,
+      "bundleIdentifier": "com.stonivale.sailingbuddy",
+      "buildNumber": "1.0.1",
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": [
+          "mail",
+          "readdle-spark<",
+          "airmail",
+          "ms-outlook",
+          "googlegmail",
+          "inbox-gmail",
+          "ymail",
+          "superhuman"
+        ]
+      }
+    },
+    "android": {
+      "package": "com.stonivale.sailingbuddy",
+      "versionCode": 2
+    },
+    "description": "This app allows skippers and crew from a sailing club to get together to go sailing. Icons made by Freepik from www.flaticon.com.\nWhat's new in this version:\n- The ability to add a description for the trip.\n- emails in the contact details are now clickable."
   }
 }
