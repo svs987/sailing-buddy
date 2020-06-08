@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import { StyleSheet, View } from 'react-native';
-import { SkipperInvitePage } from './components/SkipperInvitePage';
+import { CreateInvitePage } from './components/CreateInvitePage';
 import {HomePage} from './components/HomePage';
 import {ViewInvitesPage} from './components/ViewInvitesPage'; 
+import {MainSkipperPage} from './components/MainSkipperPage'; 
 import {TopBar} from './components/TopBar';
 import Constants from 'expo-constants';
 import 'react-native-gesture-handler';
@@ -24,13 +25,18 @@ export default function App() {
         />
 		<Stack.Screen
           name="SkipperInvite"
-          component={SkipperInvitePage}
-          options={{ title: 'Skipper' }}
+          component={CreateInvitePage}
+          options={{ title: 'New Invite' }}
         />
 		<Stack.Screen
           name="ViewInvites"
           component={ViewInvitesPage}
           options={{ title: 'Crew' }}
+        />
+		<Stack.Screen
+          name="MainSkipper"
+          component={MainSkipperPage}
+          options={{ title: 'Skipper' }}
         />
 			</Stack.Navigator>
 			</NavigationContainer>

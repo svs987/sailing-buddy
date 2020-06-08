@@ -10,7 +10,7 @@ import * as SecureStore from 'expo-secure-store';
 /**
  * 
  */
-const SkipperInvitePage = ({navigation}) => {
+const CreateInvitePage = ({navigation}) => {
 	const [skipperName, onChangeSkipperText] = React.useState('Captain Skipper');
 	const [vesselName, onChangeVesselText] = React.useState('Titanic');
 	const [contactDetails, onChangeContactDetails] = React.useState('');
@@ -119,4 +119,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export { SkipperInvitePage };
+export { CreateInvitePage };

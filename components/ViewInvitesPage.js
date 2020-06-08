@@ -50,7 +50,7 @@ const ViewInvitesPage = ({onChoose}) => {
 				  				<Text style={styles.hint}>Touch an entry to see the contact details</Text>
 				  				<FlatList
 					  				data={skipperInvites.Items}
-					  				renderItem={({ item }) => <InviteLine key={item.id} item={item} />}
+					  				renderItem={({ item }) => <InviteLine key={item.id} item={item} delete={false} />}
 					  				keyExtractor={item => item.id}
 				  				/>
 			  				</View>

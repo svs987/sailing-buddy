@@ -21,7 +21,7 @@ const HomePage = ({navigation}) => {
 		{isAuthorised &&
 				<View style={styles.body}>
 					<Text>If you're a skipper and you want to invite crew to sail with you, press Skipper</Text>
-					<Button onPress={() => navigation.navigate('SkipperInvite')} title="Skipper" />  	    	  
+					<Button onPress={() => navigation.navigate('MainSkipper')} title="Skipper" />  	    	  
 						<Text>If you're a crew and you want to find a boat to sail on, press Crew</Text>
 						<Button onPress={() => navigation.navigate('ViewInvites')} title="Crew" />  	    	  
 				</View>
