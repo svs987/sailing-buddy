@@ -43,7 +43,6 @@ const CreateInvitePage = ({navigation}) => {
 		};
 		fetch(Constants.manifest.extra.apiUrl, requestOptions)
 			.then(response => response.json())
-			.then(() => navigation.navigate('Home'))
 			.catch(err => console.log('There was an error:' + err)); //return to the home page once the response has been received.
 
 	};
@@ -55,6 +54,7 @@ const CreateInvitePage = ({navigation}) => {
 		console.log("authorisationCodeKey: ", authorisationCodeKey);
 		SecureStore.getItemAsync(authorisationCodeKey)
 			.then(authCode => sendInvitation(authCode))
+			.then(() => navigation.navigate('MainSkipper', { reload: true }))
 			.catch(err => console.log('There was an error:' + err));
 
 	};

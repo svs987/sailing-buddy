@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import Hyperlink from 'react-native-hyperlink'
 import * as Linking from 'expo-linking';
+import Constants from 'expo-constants';
+
 /**
  * 
  */
@@ -33,6 +35,23 @@ const InviteLine = (props) => {
 
 	};
 
+	const handleDelete = (theId) => {
+		console.log('Deleting', theId);
+		const requestOptions = {
+			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				id: theId,
+			})
+		};
+		console.log('requestOptions:', JSON.stringify({ requestOptions }));
+		fetch(Constants.manifest.extra.apiUrl, requestOptions)
+			.then(response => response.json())
+			.then(() => props.setLoading(true))						//force a reload of the list
+			.catch(err => console.log('There was an error:' + err)); //return to the home page once the response has been received.
+
+	};
+
 	return (
 		<View>
 			<TouchableOpacity style={styles.lineItem}
@@ -58,7 +77,7 @@ const InviteLine = (props) => {
 			)}
 			{show && props.delete && (
 				<View>
-					<Button title="Delete" />
+					 <Button onPress={()=>{handleDelete(props.item.id)}} title="Delete" />
 				</View>
 
 			)}

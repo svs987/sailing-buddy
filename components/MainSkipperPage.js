@@ -8,7 +8,7 @@ import Constants from 'expo-constants';
 /**
  * 
  */
-const MainSkipperPage = ({ navigation }) => {
+const MainSkipperPage = ({ navigation, route }) => {
     const [isLoading, setLoading] = React.useState(true);
     const [skipperInvites, setSkipperInvites] = React.useState();
     const requestOptions = {
@@ -25,18 +25,24 @@ const MainSkipperPage = ({ navigation }) => {
     }
 
     useEffect(() => {
-        console.log("Fetching skipper invites...");
-        fetch(Constants.manifest.extra.apiUrl, requestOptions)
-            .then(response => response.json())
-            .then(data => {
-                data.Items.sort(compareInvites);
-                setSkipperInvites(data);
-                setLoading(false);
-                console.log('Data:', data);
-            })
-            .catch((error) => { console.log(error) })
 
-    }, []); // the blank array param means that this will not be reloaded because of setting the state
+        console.log("isLoading: ", isLoading);
+        console.log('route.params: ', route.params)
+        if (isLoading || (route && route.params && route.params?.reload)) {
+            console.log("Fetching skipper invites...");
+            fetch(Constants.manifest.extra.apiUrl, requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    data.Items.sort(compareInvites);
+                    setSkipperInvites(data);
+                    setLoading(false);
+                    route.params = false;
+                    console.log('Data:', data);
+                })
+                .catch((error) => { console.log(error) })
+        }
+
+    });
 
 
 
@@ -51,7 +57,7 @@ const MainSkipperPage = ({ navigation }) => {
                     <Text style={styles.hint}>Touch an entry to see the full details and for the option to delete the trip</Text>
                     <FlatList
                         data={skipperInvites.Items}
-                        renderItem={({ item }) => <InviteLine key={item.id} item={item} delete={true} />}
+                        renderItem={({ item }) => <InviteLine key={item.id} item={item} delete={true} setLoading={setLoading} />}
                         keyExtractor={item => item.id}
                     />
                 </View>
@@ -77,7 +83,7 @@ const styles = StyleSheet.create({
     results: {
         flex: 1,
         paddingTop: 10,
-        paddingHorizontal:20,
+        paddingHorizontal: 20,
 
     },
     hint: {
