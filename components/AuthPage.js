@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native';
-import * as SecureStore from 'expo-secure-store';
-import Constants from 'expo-constants';
-
 
 const AuthPage = (props) => {
     const [authorisationCode, onChangeAuthorisationCode] = React.useState('');
 
-    const onSubmit = () => {
-        SecureStore.setItemAsync(Constants.manifest.extra.authorisationCodeKey, authorisationCode)
-            .then(res => {props.setAuthorised(true)})
-            .catch(err => console.log('There was an error:' + err));
-
-    };
+    
 
     return (
         <View>
@@ -24,7 +16,7 @@ const AuthPage = (props) => {
                 style={styles.inputbox}
                 onChangeText={text => onChangeAuthorisationCode(text)}
             />
-            <Button onPress={onSubmit} title="Log In" />
+            <Button onPress={()=>{props.handleAuthorisationCode(authorisationCode, props.setAuthorised)}} title="Log In" />
         </View>
 
     )

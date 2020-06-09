@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { AuthPage } from './AuthPage';
+import { handleAuthCode} from './logic/handleAuthCode';
 
 /**
  * 
@@ -15,7 +16,7 @@ const HomePage = ({navigation}) => {
 		<View style={styles.container}>
 		{!isAuthorised &&
 			<View>
-				<AuthPage setAuthorised = {setAuthorised} />
+				<AuthPage setAuthorised = {setAuthorised} handleAuthorisationCode = {handleAuthCode} />
 			</View>
 		}
 		{isAuthorised &&
