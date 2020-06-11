@@ -4,8 +4,9 @@ import { TextInput, Button } from 'react-native';
 
 const AuthPage = (props) => {
     const [authorisationCode, onChangeAuthorisationCode] = React.useState('');
+    const [authorisationError, setAuthorisationError] = React.useState(false);
 
-    
+
 
     return (
         <View>
@@ -16,7 +17,14 @@ const AuthPage = (props) => {
                 style={styles.inputbox}
                 onChangeText={text => onChangeAuthorisationCode(text)}
             />
-            <Button onPress={()=>{props.handleAuthorisationCode(authorisationCode, props.setAuthorised)}} title="Log In" />
+            {authorisationError &&
+                <View>
+                    <Text style={styles.authorisationError}>Error validating authorisation code. </Text>
+                        <Text style={styles.authorisationError}>Please check that you have entered the correct code.</Text>
+                        <Text style={styles.authorisationError}>If you continue to have problems please contact your Yacht Club</Text>
+                </View>
+            }
+            <Button onPress={() => { props.handleAuthorisationCode(authorisationCode, props.setAuthorised,setAuthorisationError) }} title="Validate Code" />
         </View>
 
     )
@@ -24,20 +32,23 @@ const AuthPage = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+        flex: 1,
     },
     body: {
-       flex: 1,
-       paddingTop: 100,
-       paddingHorizontal: 20,
-    
+        flex: 1,
+        paddingTop: 100,
+        paddingHorizontal: 20,
+
     },
-    inputbox: { 
-        height: 40, 
-        borderColor: 'gray', 
-        borderWidth: 1 
-        },
-  });
+    inputbox: {
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1
+    },
+    authorisationError: {
+        color: 'red',
+    }
+});
 
 
 export { AuthPage };

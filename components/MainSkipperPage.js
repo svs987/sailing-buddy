@@ -4,7 +4,7 @@ import { TextInput, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { InviteLine } from './InviteLine';
 import Constants from 'expo-constants';
-import {getSkipperInvites} from './logic/getSkipperInvites';
+import {getInfo} from './logic/getInfo';
 import {getAuthorisationCode} from './logic/GetAuthorisationCode';
 
 
@@ -36,7 +36,7 @@ const MainSkipperPage = ({ navigation, route }) => {
             getAuthorisationCode()
             .then(authCode => {
                 console.log('In useEffect. authCode: ', authCode);
-                return getSkipperInvites(authCode);
+                return getInfo(Constants.manifest.extra.apiUrl, authCode);
     
             })
                 .then(response => {
