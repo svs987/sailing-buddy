@@ -4,6 +4,9 @@ import { TextInput, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { InviteLine } from './InviteLine';
 import Constants from 'expo-constants';
+import {getSkipperInvites} from './logic/getSkipperInvites';
+import {getAuthorisationCode} from './logic/GetAuthorisationCode';
+
 
 /**
  * 
@@ -13,7 +16,7 @@ const MainSkipperPage = ({ navigation, route }) => {
     const [skipperInvites, setSkipperInvites] = React.useState();
     const requestOptions = {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' }
     };
 
 
@@ -30,9 +33,18 @@ const MainSkipperPage = ({ navigation, route }) => {
         console.log('route.params: ', route.params)
         if (isLoading || (route && route.params && route.params?.reload)) {
             console.log("Fetching skipper invites...");
-            fetch(Constants.manifest.extra.apiUrl, requestOptions)
-                .then(response => response.json())
+            getAuthorisationCode()
+            .then(authCode => {
+                console.log('In useEffect. authCode: ', authCode);
+                return getSkipperInvites(authCode);
+    
+            })
+                .then(response => {
+                    console.log('Turning response to json');
+                    return response.json();
+                })
                 .then(data => {
+                    console.log('data is:', data);
                     data.Items.sort(compareInvites);
                     setSkipperInvites(data);
                     setLoading(false);

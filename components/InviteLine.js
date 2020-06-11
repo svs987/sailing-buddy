@@ -35,13 +35,14 @@ const InviteLine = (props) => {
 
 	};
 
-	const handleDelete = (theId) => {
+	const handleDelete = (theId, theAuthCode) => {
 		console.log('Deleting', theId);
 		const requestOptions = {
 			method: 'DELETE',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				id: theId,
+				authorisationCode: theAuthCode,
 			})
 		};
 		console.log('requestOptions:', JSON.stringify({ requestOptions }));
@@ -77,7 +78,7 @@ const InviteLine = (props) => {
 			)}
 			{show && props.delete && (
 				<View>
-					 <Button onPress={()=>{handleDelete(props.item.id)}} title="Delete" />
+					 <Button onPress={()=>{handleDelete(props.item.id, props.item.authorisationCode)}} title="Delete" />
 				</View>
 
 			)}

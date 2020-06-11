@@ -4,8 +4,8 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { TextInput, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { DateInput } from './DateInput';
+import { getAuthorisationCode } from './logic/GetAuthorisationCode';
 import Constants from 'expo-constants';
-import * as SecureStore from 'expo-secure-store';
 
 /**
  * 
@@ -49,10 +49,7 @@ const CreateInvitePage = ({navigation}) => {
 
 
 	const submit = () => {
-		var authorisationCode;
-		const authorisationCodeKey = Constants.manifest.extra.authorisationCodeKey;
-		console.log("authorisationCodeKey: ", authorisationCodeKey);
-		SecureStore.getItemAsync(authorisationCodeKey)
+		getAuthorisationCode()
 			.then(authCode => sendInvitation(authCode))
 			.then(() => navigation.navigate('MainSkipper', { reload: true }))
 			.catch(err => console.log('There was an error:' + err));

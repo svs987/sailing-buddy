@@ -4,6 +4,7 @@ import { TextInput, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {InviteLine} from './InviteLine';
 import Constants from 'expo-constants';
+import {getSkipperInvites} from './logic/getSkipperInvites';
 
 /**
  * 
@@ -26,7 +27,7 @@ const ViewInvitesPage = ({onChoose}) => {
 		  
 	useEffect(() => {
 		  console.log("Fetching skipper invites...");
-		  fetch(Constants.manifest.extra.apiUrl, requestOptions)
+		  getSkipperInvites()
 		  .then(response => response.json())
 		  .then(data => {
 			  data.Items.sort(compareInvites);
