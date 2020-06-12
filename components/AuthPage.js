@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native';
+import { handleAuthCode } from './logic/handleAuthCode';
+import { AuthenticationContext } from '../App';
 
-const AuthPage = (props) => {
+const AuthPage = ({ navigation }) => {
     const [authorisationCode, onChangeAuthorisationCode] = React.useState('');
     const [authorisationError, setAuthorisationError] = React.useState(false);
+    const dispatch = useContext(AuthenticationContext);
 
 
 
@@ -20,11 +23,16 @@ const AuthPage = (props) => {
             {authorisationError &&
                 <View>
                     <Text style={styles.authorisationError}>Error validating authorisation code. </Text>
-                        <Text style={styles.authorisationError}>Please check that you have entered the correct code.</Text>
-                        <Text style={styles.authorisationError}>If you continue to have problems please contact your Yacht Club</Text>
+                    <Text style={styles.authorisationError}>Please check that you have entered the correct code.</Text>
+                    <Text style={styles.authorisationError}>If you continue to have problems please contact your Yacht Club</Text>
                 </View>
             }
-            <Button onPress={() => { props.handleAuthorisationCode(authorisationCode, props.setAuthorised,setAuthorisationError) }} title="Validate Code" />
+            <Text>Please view the terms and conditions</Text>
+            <Button onPress={() => {
+                console.log('T&C button pressed');
+                return navigation.navigate('TandC')
+            }} title="Terms and Conditions" />
+            <Button onPress={() => { handleAuthCode(authorisationCode, dispatch, setAuthorisationError) }} title="Validate Code" />
         </View>
 
     )

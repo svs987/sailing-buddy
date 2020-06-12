@@ -2,9 +2,11 @@ import * as SecureStore from 'expo-secure-store';
 import Constants from 'expo-constants';
 import { getInfo } from './getInfo';
 
+
 const checkAuthCode = async (authorisationCode) => {
     const url = Constants.manifest.extra.authCodeUrl;
     console.log('url: ', url);
+
     const response = await getInfo(url, authorisationCode);
     const jsonResponse = await response.json();
     console.log('response:', jsonResponse);
@@ -18,7 +20,7 @@ const handleAuthCode = async (authorisationCode, setAuthorised,setAuthorisationE
     const valid = await checkAuthCode(authorisationCode);
     if (valid) {
         SecureStore.setItemAsync(Constants.manifest.extra.authorisationCodeKey, authorisationCode)
-            .then(res => { setAuthorised(true) })
+            .then(res => { setAuthorised({type: 'SET_AUTHENTICATED'}) })
             .catch(err => { console.log('There was an error:' + err);
                             setAuthorisationError(true)});
     } else {
