@@ -17,7 +17,7 @@ const AppContainer = () => {
     
     const isAuthorised = () => {
         console.log('context:', context);
-        return context.state != 'AUTHENTICATED';
+        return context.state.authenticated != 'AUTHENTICATED';
       };
     
     return (

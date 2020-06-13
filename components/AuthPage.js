@@ -14,7 +14,7 @@ const AuthPage = ({ navigation }) => {
     let  [,setState]=useState();
     
     console.log('Render!');
-    console.log('isAuthorised: ', isAuthorised.state);
+    console.log('isAuthorised: ', isAuthorised.state.authenticated);
     
     return (
         <View>
@@ -25,7 +25,7 @@ const AuthPage = ({ navigation }) => {
                 style={styles.inputbox}
                 onChangeText={text => onChangeAuthorisationCode(text)}
             />
-            {isAuthorised.state=='VALIDATION_FAILED' &&
+            {isAuthorised.state.authenticated=='VALIDATION_FAILED' &&
                 <View>
                     <Text style={styles.authorisationError}>Error validating authorisation code. </Text>
                     <Text style={styles.authorisationError}>Please check that you have entered the correct code.</Text>
