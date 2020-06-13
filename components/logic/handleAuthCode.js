@@ -16,17 +16,17 @@ const checkAuthCode = async (authorisationCode) => {
         return false;
 }
 
-const handleAuthCode = async (authorisationCode, setAuthorised,setAuthorisationError) => {
+const handleAuthCode = async (authorisationCode, setAuthorised) => {
     const valid = await checkAuthCode(authorisationCode);
     if (valid) {
         SecureStore.setItemAsync(Constants.manifest.extra.authorisationCodeKey, authorisationCode)
             .then(res => { setAuthorised({type: 'SET_AUTHENTICATED'}) })
             .catch(err => { console.log('There was an error:' + err);
-                            setAuthorisationError(true)});
+            setAuthorised({type: 'VALIDATION_FAILED'})});
     } else {
-        setAuthorisationError(true);
+        setAuthorised({type: 'VALIDATION_FAILED'});
     }
-
+    
 };
 
 export { handleAuthCode };

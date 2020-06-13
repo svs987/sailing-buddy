@@ -1,16 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native';
 import { handleAuthCode } from './logic/handleAuthCode';
-import { AuthenticationContext } from '../App';
+import { CheckBox } from 'react-native-elements';
+import { store } from '../state/store';
+
 
 const AuthPage = ({ navigation }) => {
-    const [authorisationCode, onChangeAuthorisationCode] = React.useState('');
-    const [authorisationError, setAuthorisationError] = React.useState(false);
-    const dispatch = useContext(AuthenticationContext);
-
-
-
+    const [authorisationCode, onChangeAuthorisationCode] = useState('');
+    const [tandCAccepted, setTandCAccepted] = useState(false);
+    const isAuthorised = useContext(store);
+    const { dispatch } = isAuthorised;
+    let  [,setState]=useState();
+    
+    console.log('Render!');
+    console.log('isAuthorised: ', isAuthorised.state);
+    
     return (
         <View>
             <Text>Welcome to Sailing Buddy</Text>
@@ -20,19 +25,26 @@ const AuthPage = ({ navigation }) => {
                 style={styles.inputbox}
                 onChangeText={text => onChangeAuthorisationCode(text)}
             />
-            {authorisationError &&
+            {isAuthorised.state=='VALIDATION_FAILED' &&
                 <View>
                     <Text style={styles.authorisationError}>Error validating authorisation code. </Text>
                     <Text style={styles.authorisationError}>Please check that you have entered the correct code.</Text>
                     <Text style={styles.authorisationError}>If you continue to have problems please contact your Yacht Club</Text>
                 </View>
             }
-            <Text>Please view the terms and conditions</Text>
+            <Text>Please review the terms and conditions</Text>
             <Button onPress={() => {
                 console.log('T&C button pressed');
                 return navigation.navigate('TandC')
             }} title="Terms and Conditions" />
-            <Button onPress={() => { handleAuthCode(authorisationCode, dispatch, setAuthorisationError) }} title="Validate Code" />
+
+            <CheckBox
+                title='I have reviewed and accept the Terms and Conditions for this App'
+                checked = {tandCAccepted}
+                onPress={() => setTandCAccepted(!tandCAccepted)}
+                
+            />
+            <Button onPress={() => { handleAuthCode(authorisationCode, dispatch ) }} title="Validate Code" />
         </View>
 
     )
