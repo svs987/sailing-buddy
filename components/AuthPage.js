@@ -8,14 +8,28 @@ import { store } from '../state/store';
 
 const AuthPage = ({ navigation }) => {
     const [authorisationCode, onChangeAuthorisationCode] = useState('');
-    const [tandCAccepted, setTandCAccepted] = useState(false);
     const isAuthorised = useContext(store);
     const { dispatch } = isAuthorised;
-    let  [,setState]=useState();
-    
+    let [, setState] = useState();
+
     console.log('Render!');
     console.log('isAuthorised: ', isAuthorised.state.authenticated);
-    
+
+    const handleValidation = async () => {
+        res = await handleAuthCode(authorisationCode);
+        console.log('return from handleAuthCode', res);
+        if (res) {
+            dispatch({ type: 'SET_AUTHENTICATED' });
+            if (isAuthorised.state.termsaccepted == 'ACCEPTED') {
+                dispatch({ type: 'SET_AUTH_PAGE_COMPLETED' }); //We can move on to the main app
+            } else {
+                dispatch({type: 'SET_TERMS_NOT_ACCEPTED'}); // Show that the terms and conditions need to be accepted
+            }
+        } else {
+            dispatch({ type: 'VALIDATION_FAILED' });
+        }
+    }
+
     return (
         <View>
             <Text>Welcome to Sailing Buddy</Text>
@@ -25,7 +39,7 @@ const AuthPage = ({ navigation }) => {
                 style={styles.inputbox}
                 onChangeText={text => onChangeAuthorisationCode(text)}
             />
-            {isAuthorised.state.authenticated=='VALIDATION_FAILED' &&
+            {isAuthorised.state.authenticated == 'VALIDATION_FAILED' &&
                 <View>
                     <Text style={styles.authorisationError}>Error validating authorisation code. </Text>
                     <Text style={styles.authorisationError}>Please check that you have entered the correct code.</Text>
@@ -40,11 +54,16 @@ const AuthPage = ({ navigation }) => {
 
             <CheckBox
                 title='I have reviewed and accept the Terms and Conditions for this App'
-                checked = {tandCAccepted}
-                onPress={() => setTandCAccepted(!tandCAccepted)}
-                
+                checked={isAuthorised.state.termsaccepted == 'ACCEPTED'}
+                onPress={() => dispatch({ type: 'TOGGLE_TERMS_ACCEPTED' })}
+
             />
-            <Button onPress={() => { handleAuthCode(authorisationCode, dispatch ) }} title="Validate Code" />
+            {isAuthorised.state.termsaccepted == 'NOT_ACCEPTED_FAIL' &&
+                <View>
+                    <Text style={styles.authorisationError}>Please check the box to confirm that you have read and accept the terms and conditions</Text>
+                </View>
+            }
+            <Button onPress={() => { handleValidation() }} title="Validate Code" />
         </View>
 
     )

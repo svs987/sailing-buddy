@@ -11,64 +11,64 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { store } from '../state/store';
 
 const AppContainer = () => {
-    const context = useContext(store);
+  const context = useContext(store);
 
-    const Stack = createStackNavigator();
-    
-    const isAuthorised = () => {
-        console.log('context:', context);
-        return context.state.authenticated != 'AUTHENTICATED';
-      };
-    
-    return (
-        isAuthorised() ? (
-            <NavigationContainer initialRouteName="Authorise">
-              <Stack.Navigator>
-                <Stack.Screen
-                  name="Authorise"
-                  component={AuthPage}
-                  options={{ title: 'SailingBuddy' }}
-                />
-                <Stack.Screen
-                  name="TandC"
-                  component={TandCPage}
-                  options={{ title: 'Terms and Conditions' }}
-                />
-              </Stack.Navigator>
-            </NavigationContainer>
-        ) : (
-            <NavigationContainer initialRouteName="Home">
-              <Stack.Navigator>
-                <Stack.Screen
-                  name="Home"
-                  component={HomePage}
-                  options={{ title: 'SailingBuddy' }}
-                />
-                <Stack.Screen
-                  name="TandC"
-                  component={TandCPage}
-                  options={{ title: 'Terms and Conditions' }}
-                />
-                <Stack.Screen
-                  name="SkipperInvite"
-                  component={CreateInvitePage}
-                  options={{ title: 'New Invite' }}
-                />
-                <Stack.Screen
-                  name="ViewInvites"
-                  component={ViewInvitesPage}
-                  options={{ title: 'Crew' }}
-                />
-                <Stack.Screen
-                  name="MainSkipper"
-                  component={MainSkipperPage}
-                  options={{ title: 'Skipper' }}
-                />
-              </Stack.Navigator>
-            </NavigationContainer>
-          )
-        
-      );
+  const Stack = createStackNavigator();
+
+  const isAuthPageCompleted = () => {
+    console.log('context:', context);
+    return context.state.authPageCompleted == 'COMPLETED';
+  };
+
+  return (
+    !isAuthPageCompleted() ? (
+      <NavigationContainer initialRouteName="Authorise">
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Authorise"
+            component={AuthPage}
+            options={{ title: 'SailingBuddy' }}
+          />
+          <Stack.Screen
+            name="TandC"
+            component={TandCPage}
+            options={{ title: 'Terms and Conditions' }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    ) : (
+        <NavigationContainer initialRouteName="Home">
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Home"
+              component={HomePage}
+              options={{ title: 'SailingBuddy' }}
+            />
+            <Stack.Screen
+              name="TandC"
+              component={TandCPage}
+              options={{ title: 'Terms and Conditions' }}
+            />
+            <Stack.Screen
+              name="SkipperInvite"
+              component={CreateInvitePage}
+              options={{ title: 'New Invite' }}
+            />
+            <Stack.Screen
+              name="ViewInvites"
+              component={ViewInvitesPage}
+              options={{ title: 'Crew' }}
+            />
+            <Stack.Screen
+              name="MainSkipper"
+              component={MainSkipperPage}
+              options={{ title: 'Skipper' }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      )
+
+  );
 }
 
-export { AppContainer};
+export { AppContainer };

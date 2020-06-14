@@ -16,17 +16,22 @@ const checkAuthCode = async (authorisationCode) => {
         return false;
 }
 
-const handleAuthCode = async (authorisationCode, setAuthorised) => {
+const handleAuthCode = async (authorisationCode) => {
     const valid = await checkAuthCode(authorisationCode);
+    var result = false;
+    console.log('result for checkAuthCode', valid);
     if (valid) {
-        SecureStore.setItemAsync(Constants.manifest.extra.authorisationCodeKey, authorisationCode)
-            .then(res => { setAuthorised({type: 'SET_AUTHENTICATED'}) })
-            .catch(err => { console.log('There was an error:' + err);
-            setAuthorised({type: 'VALIDATION_FAILED'})});
-    } else {
-        setAuthorised({type: 'VALIDATION_FAILED'});
+        try {
+            await SecureStore.setItemAsync(Constants.manifest.extra.authorisationCodeKey, authorisationCode)
+            console.log('AuthCode stored');
+            result = true;
+        }
+        catch {
+            console.log('There was an error:' + err);
+        }
     }
-    
+    return result;
+
 };
 
 export { handleAuthCode };
