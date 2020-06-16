@@ -7,8 +7,9 @@ currently being supported with security updates.
 
 | Version | Supported          |
 | ------- | ------------------ |
+| V1.1.0  | Yes                |
 
 
 ## Reporting a Vulnerability
 
-Please let me know by raising an issue in Github???
+Please let me know by raising an issue in Github
