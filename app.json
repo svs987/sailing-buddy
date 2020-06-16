@@ -7,7 +7,7 @@
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -24,7 +24,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.stonivale.sailingbuddy",
-      "buildNumber": "1.0.1",
+      "buildNumber": "1.1.0",
       "infoPlist": {
         "LSApplicationQueriesSchemes": [
           "mail",
@@ -40,8 +40,8 @@
     },
     "android": {
       "package": "com.stonivale.sailingbuddy",
-      "versionCode": 2
+      "versionCode": 3
     },
-    "description": "This app allows skippers and crew from a sailing club to get together to go sailing. Icons made by Freepik from www.flaticon.com.\nWhat's new in this version:\n- The ability to add a description for the trip.\n- emails in the contact details are now clickable."
+    "description": "This app allows skippers and crew from a sailing club to get together to go sailing. \nIcons made by Freepik from www.flaticon.com.\nWhat's new in this version:\n- Users have to authenticate before they can use the app.\n-Users have to accept Terms and Conditions.\nUsers can delete their own trips"
   }
 }
