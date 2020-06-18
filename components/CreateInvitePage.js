@@ -29,9 +29,12 @@ const CreateInvitePage = ({navigation}) => {
 	};
 
 	const sendInvitation = (authorisationCode) => {
+		console.log('sending Invitation');
 		const requestOptions = {
 			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
+			headers: { 'Content-Type': 'application/json',
+			'authorization': 'Bearer ' + Constants.manifest.extra.jwtBearerToken
+		},
 			body: JSON.stringify({
 				skipperName: skipperName,
 				vesselName: vesselName,

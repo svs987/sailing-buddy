@@ -7,7 +7,7 @@ const checkAuthCode = async (authorisationCode) => {
     const url = Constants.manifest.extra.authCodeUrl;
     console.log('url: ', url);
 
-    const response = await getInfo(url, authorisationCode);
+    const response = await getInfo(url, null, authorisationCode);
     const jsonResponse = await response.json();
     console.log('response:', jsonResponse);
     if (jsonResponse && jsonResponse.Item && jsonResponse.Item.id) //If the query returns a non-empty item then there must be a matching code in the authorisation database

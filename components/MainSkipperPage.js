@@ -36,7 +36,7 @@ const MainSkipperPage = ({ navigation, route }) => {
             getAuthorisationCode()
             .then(authCode => {
                 console.log('In useEffect. authCode: ', authCode);
-                return getInfo(Constants.manifest.extra.apiUrl, authCode);
+                return getInfo(Constants.manifest.extra.apiUrl, Constants.manifest.extra.jwtBearerToken, authCode);
     
             })
                 .then(response => {
@@ -69,7 +69,12 @@ const MainSkipperPage = ({ navigation, route }) => {
                     <Text style={styles.hint}>Touch an entry to see the full details and for the option to delete the trip</Text>
                     <FlatList
                         data={skipperInvites.Items}
-                        renderItem={({ item }) => <InviteLine key={item.id} item={item} delete={true} setLoading={setLoading} />}
+                        renderItem={({ item }) => <InviteLine key={item.id} 
+                                                            item={item} 
+                                                            delete={true} 
+                                                            jwtBearerToken={Constants.manifest.extra.jwtBearerToken} 
+                                                            setLoading={setLoading}
+                                                             />}
                         keyExtractor={item => item.id}
                     />
                 </View>

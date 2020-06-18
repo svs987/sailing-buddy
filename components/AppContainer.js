@@ -9,6 +9,8 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { store } from '../state/store';
+import Constants from 'expo-constants';
+
 
 const AppContainer = () => {
   const context = useContext(store);
@@ -27,7 +29,7 @@ const AppContainer = () => {
           <Stack.Screen
             name="Authorise"
             component={AuthPage}
-            options={{ title: 'SailingBuddy' }}
+            options={{ title: 'SailingBuddy' +  Constants.manifest.extra.environment }}
           />
           <Stack.Screen
             name="TandC"
@@ -42,7 +44,7 @@ const AppContainer = () => {
             <Stack.Screen
               name="Home"
               component={HomePage}
-              options={{ title: 'SailingBuddy' }}
+              options={{ title: 'SailingBuddy' +  Constants.manifest.extra.environment }}
             />
             <Stack.Screen
               name="TandC"

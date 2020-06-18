@@ -27,7 +27,7 @@ const ViewInvitesPage = ({onChoose}) => {
 		  
 	useEffect(() => {
 		  console.log("Fetching skipper invites...");
-		  getInfo(Constants.manifest.extra.apiUrl)
+		  getInfo(Constants.manifest.extra.apiUrl, Constants.manifest.extra.jwtBearerToken)
 		  .then(response => response.json())
 		  .then(data => {
 			  data.Items.sort(compareInvites);

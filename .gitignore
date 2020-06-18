@@ -13,3 +13,7 @@ app.config.js
 
 # macOS
 .DS_Store
+app.config.dev.js
+app.config.test.js
+.gitignore
+.gitignore
