@@ -9,7 +9,7 @@ export default ({ config }) => {
         apiUrl: '---Replace this with the url of your skipper api---',
         authCodeUrl: '---Replace this with the url of your auth code api---',
         authorisationCodeKey: "---Reaplce this with the Key to your Authorisation Code in the secure store",
-        fact: 'kittens are cool',
+        jwtBearerToken: "---REplace this with the bearer token of your jwt authorization thingy ---",
         },
     };
   };
