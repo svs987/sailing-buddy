@@ -4,8 +4,9 @@ import { TextInput, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { InviteLine } from './InviteLine';
 import Constants from 'expo-constants';
-import {getInfo} from './logic/getInfo';
-import {getAuthorisationCode} from './logic/GetAuthorisationCode';
+import { getInfo } from './logic/getInfo';
+import { getAuthorisationCode } from './logic/GetAuthorisationCode';
+import { getAccessToken } from './logic/getAccessToken';
 
 
 /**
@@ -28,17 +29,28 @@ const MainSkipperPage = ({ navigation, route }) => {
     }
 
     useEffect(() => {
-
+        var jwtBearerToken = null;
         console.log("isLoading: ", isLoading);
         console.log('route.params: ', route.params)
         if (isLoading || (route && route.params && route.params?.reload)) {
             console.log("Fetching skipper invites...");
-            getAuthorisationCode()
-            .then(authCode => {
-                console.log('In useEffect. authCode: ', authCode);
-                return getInfo(Constants.manifest.extra.apiUrl, Constants.manifest.extra.jwtBearerToken, authCode);
-    
-            })
+            getAccessToken()
+                .then(accessResponse => {
+                    console.log("Turning access token to json... ");
+                    return accessResponse.json();
+                })
+                .then(accessData => {
+                    console.log('Access data is: ', accessData);
+                    jwtBearerToken = accessData.access_token;
+                    return getAuthorisationCode();
+                }
+                )
+                .then(authCode => {
+                    console.log('In useEffect. authCode: ', authCode);
+                    console.log('jwtBearerToken: ', jwtBearerToken);
+                    return getInfo(Constants.manifest.extra.apiUrl, 'authorization', 'Bearer ' + jwtBearerToken, authCode);
+
+                })
                 .then(response => {
                     console.log('Turning response to json');
                     return response.json();
@@ -69,12 +81,12 @@ const MainSkipperPage = ({ navigation, route }) => {
                     <Text style={styles.hint}>Touch an entry to see the full details and for the option to delete the trip</Text>
                     <FlatList
                         data={skipperInvites.Items}
-                        renderItem={({ item }) => <InviteLine key={item.id} 
-                                                            item={item} 
-                                                            delete={true} 
-                                                            jwtBearerToken={Constants.manifest.extra.jwtBearerToken} 
-                                                            setLoading={setLoading}
-                                                             />}
+                        renderItem={({ item }) => <InviteLine key={item.id}
+                            item={item}
+                            delete={true}
+                            jwtBearerToken={Constants.manifest.extra.jwtBearerToken}
+                            setLoading={setLoading}
+                        />}
                         keyExtractor={item => item.id}
                     />
                 </View>

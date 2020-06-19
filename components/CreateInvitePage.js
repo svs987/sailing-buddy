@@ -6,11 +6,12 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { DateInput } from './DateInput';
 import { getAuthorisationCode } from './logic/GetAuthorisationCode';
 import Constants from 'expo-constants';
+import { getAccessToken } from './logic/getAccessToken';
 
 /**
  * 
  */
-const CreateInvitePage = ({navigation}) => {
+const CreateInvitePage = ({ navigation }) => {
 	const [skipperName, onChangeSkipperText] = React.useState('Captain Skipper');
 	const [vesselName, onChangeVesselText] = React.useState('Titanic');
 	const [contactDetails, onChangeContactDetails] = React.useState('');
@@ -30,21 +31,30 @@ const CreateInvitePage = ({navigation}) => {
 
 	const sendInvitation = (authorisationCode) => {
 		console.log('sending Invitation');
-		const requestOptions = {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json',
-			'authorization': 'Bearer ' + Constants.manifest.extra.jwtBearerToken
-		},
-			body: JSON.stringify({
-				skipperName: skipperName,
-				vesselName: vesselName,
-				contactDetails: contactDetails,
-				date: date,
-				tripDescription: tripDescription,
-				authorisationCode: authorisationCode,
+		getAccessToken()
+			.then(accessResponse => {
+				console.log("Turning access token to json... ");
+				return accessResponse.json();
 			})
-		};
-		fetch(Constants.manifest.extra.apiUrl, requestOptions)
+			.then(accessData => {
+				console.log('Access data is: ', accessData);
+				const requestOptions = {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'authorization': 'Bearer ' + accessData.access_token
+					},
+					body: JSON.stringify({
+						skipperName: skipperName,
+						vesselName: vesselName,
+						contactDetails: contactDetails,
+						date: date,
+						tripDescription: tripDescription,
+						authorisationCode: authorisationCode,
+					})
+				};
+				return fetch(Constants.manifest.extra.apiUrl, requestOptions);
+			})
 			.then(response => response.json())
 			.catch(err => console.log('There was an error:' + err)); //return to the home page once the response has been received.
 
