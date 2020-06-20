@@ -73,42 +73,42 @@ const CreateInvitePage = ({ navigation }) => {
 
 	return (
 		<KeyboardAwareScrollView
-		resetScrollToCoords={{ x: 0, y: 0 }}
-		contentContainerStyle={styles.container}
-		scrollEnabled={true}
-	  >
-			  <Text style={styles.inputBoxHeading}>My name is:</Text>
-				<TextInput
-					placeholder="Skipper name"
-					style={styles.inputbox}
-					onChangeText={text => onChangeSkipperText(text)}
-				/>
-				<Text style={styles.inputBoxHeading}>The name of my vessel is:</Text>
-				<TextInput
-					placeholder="Vessel name"
-					style={styles.inputbox}
-					onChangeText={text => onChangeVesselText(text)}
-				/>
-				<Text style={styles.inputBoxHeading}>The description of the trip is (e.g. Day Racing, Weekend Cruise):</Text>
-				<TextInput
-					placeholder="Trip Description..."
-					style={styles.contactDetails}
-					onChangeText={text => onChangeTripDescription(text)}
-					multiline={true}
-				/>
-				<Text style={styles.inputBoxHeading}>My contact details are:</Text>
-				<TextInput
-					placeholder="Contact details..."
-					style={styles.contactDetails}
-					onChangeText={text => onChangeContactDetails(text)}
-					multiline={true}
-				/>
+			resetScrollToCoords={{ x: 0, y: 0 }}
+			contentContainerStyle={styles.container}
+			scrollEnabled={true}
+		>
+			<Text style={styles.inputBoxHeading}>I am going sailing on:</Text>
+			<DateInput date={date} onChange={onChange} />
+			<Text style={styles.inputBoxHeading}>My name is:</Text>
+			<TextInput
+				placeholder="Skipper name"
+				style={styles.inputbox}
+				onChangeText={text => onChangeSkipperText(text)}
+			/>
+			<Text style={styles.inputBoxHeading}>The name of my vessel is:</Text>
+			<TextInput
+				placeholder="Vessel name"
+				style={styles.inputbox}
+				onChangeText={text => onChangeVesselText(text)}
+			/>
+			<Text style={styles.inputBoxHeading}>The description of the trip is (e.g. Day Racing, Weekend Cruise):</Text>
+			<TextInput
+				placeholder="Trip Description..."
+				style={styles.contactDetails}
+				onChangeText={text => onChangeTripDescription(text)}
+				multiline={true}
+			/>
+			<Text style={styles.inputBoxHeading}>My contact details are:</Text>
+			<TextInput
+				placeholder="Contact details..."
+				style={styles.contactDetails}
+				onChangeText={text => onChangeContactDetails(text)}
+				multiline={true}
+			/>
 
-				<Text style={styles.inputBoxHeading}>I am going sailing on:</Text>
-				<DateInput date={date} onChange={onChange} />
-				<Button onPress={submit} title="Send invitation" />
-				<View style={{ height: 60 }} />
-  		</KeyboardAwareScrollView>
+			<Button onPress={submit} title="Send invitation" />
+			<View style={{ height: 60 }} />
+		</KeyboardAwareScrollView>
 	)
 
 }
