@@ -75,7 +75,7 @@ const CreateInvitePage = ({ navigation }) => {
 		<KeyboardAwareScrollView
 		resetScrollToCoords={{ x: 0, y: 0 }}
 		contentContainerStyle={styles.container}
-		scrollEnabled={false}
+		scrollEnabled={true}
 	  >
 			  <Text style={styles.inputBoxHeading}>My name is:</Text>
 				<TextInput
