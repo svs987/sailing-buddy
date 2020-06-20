@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import Hyperlink from 'react-native-hyperlink'
 import * as Linking from 'expo-linking';
-import {deleteTrip} from './logic/deleteTrip'
+import { deleteTrip } from './logic/deleteTrip';
+import { text_truncate } from './logic/TextTruncate';
 
 /**
  * 
@@ -27,7 +28,11 @@ const InviteLine = (props) => {
 	const handleEmail = (url, text) => {
 		Linking.canOpenURL(url).then(supported => {
 			if (supported) {
-				Linking.openURL(url);
+				Linking.openURL(encodeURI(url + '?subject=' + text_truncate(props.item.tripDescription,30)))
+					.then(response => {
+						console.log('Successfully opened url');
+					})
+					.catch(err => alert('Error opening url: ' + err));
 			} else {
 				console.log('Cant open url', url);
 			}
@@ -60,7 +65,7 @@ const InviteLine = (props) => {
 			)}
 			{show && props.delete && (
 				<View>
-					 <Button onPress={()=>{deleteTrip(props.item.id, props.setLoading)}} title="Delete" />
+					<Button onPress={() => { deleteTrip(props.item.id, props.setLoading) }} title="Delete" />
 				</View>
 
 			)}
