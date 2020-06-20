@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, KeyboardAvoidingView, View } from 'react-native';
 import { TextInput, Button } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { DateInput } from './DateInput';
 import { getAuthorisationCode } from './logic/GetAuthorisationCode';
@@ -71,45 +72,49 @@ const CreateInvitePage = ({ navigation }) => {
 
 
 	return (
-		<ScrollView style={styles.container}>
-			<Text style={styles.inputBoxHeading}>My name is:</Text>
-			<TextInput
-				placeholder="Skipper name"
-				style={styles.inputbox}
-				onChangeText={text => onChangeSkipperText(text)}
-			/>
-			<Text style={styles.inputBoxHeading}>The name of my vessel is:</Text>
-			<TextInput
-				placeholder="Vessel name"
-				style={styles.inputbox}
-				onChangeText={text => onChangeVesselText(text)}
-			/>
-			<Text style={styles.inputBoxHeading}>The description of the trip is (e.g. Day Racing, Weekend Cruise):</Text>
-			<TextInput
-				placeholder="Trip Description..."
-				style={styles.contactDetails}
-				onChangeText={text => onChangeTripDescription(text)}
-				multiline={true}
-			/>
-			<Text style={styles.inputBoxHeading}>My contact details are:</Text>
-			<TextInput
-				placeholder="Contact details..."
-				style={styles.contactDetails}
-				onChangeText={text => onChangeContactDetails(text)}
-				multiline={true}
-			/>
+		<KeyboardAwareScrollView
+		resetScrollToCoords={{ x: 0, y: 0 }}
+		contentContainerStyle={styles.container}
+		scrollEnabled={false}
+	  >
+			  <Text style={styles.inputBoxHeading}>My name is:</Text>
+				<TextInput
+					placeholder="Skipper name"
+					style={styles.inputbox}
+					onChangeText={text => onChangeSkipperText(text)}
+				/>
+				<Text style={styles.inputBoxHeading}>The name of my vessel is:</Text>
+				<TextInput
+					placeholder="Vessel name"
+					style={styles.inputbox}
+					onChangeText={text => onChangeVesselText(text)}
+				/>
+				<Text style={styles.inputBoxHeading}>The description of the trip is (e.g. Day Racing, Weekend Cruise):</Text>
+				<TextInput
+					placeholder="Trip Description..."
+					style={styles.contactDetails}
+					onChangeText={text => onChangeTripDescription(text)}
+					multiline={true}
+				/>
+				<Text style={styles.inputBoxHeading}>My contact details are:</Text>
+				<TextInput
+					placeholder="Contact details..."
+					style={styles.contactDetails}
+					onChangeText={text => onChangeContactDetails(text)}
+					multiline={true}
+				/>
 
-			<Text style={styles.inputBoxHeading}>I am going sailing on:</Text>
-			<DateInput date={date} onChange={onChange} />
-			<Button onPress={submit} title="Send invitation" />
-		</ScrollView>
+				<Text style={styles.inputBoxHeading}>I am going sailing on:</Text>
+				<DateInput date={date} onChange={onChange} />
+				<Button onPress={submit} title="Send invitation" />
+				<View style={{ height: 60 }} />
+  		</KeyboardAwareScrollView>
 	)
 
 }
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		paddingTop: 10,
 		paddingHorizontal: 20,
 	},
