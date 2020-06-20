@@ -17,18 +17,18 @@ const checkAuthCode = async (authorisationCode) => {
 }
 
 const handleAuthCode = async (authorisationCode) => {
-    const valid = await checkAuthCode(authorisationCode);
-    var result = false;
-    console.log('result for checkAuthCode', valid);
-    if (valid) {
-        try {
+    try {
+        const valid = await checkAuthCode(authorisationCode);
+        var result = false;
+        console.log('result for checkAuthCode', valid);
+        if (valid) {
             await SecureStore.setItemAsync(Constants.manifest.extra.authorisationCodeKey, authorisationCode)
             console.log('AuthCode stored');
             result = true;
         }
-        catch {
-            console.log('There was an error:' + err);
-        }
+    }
+    catch {
+        console.log('There was an error in handleAuthCode');
     }
     return result;
 
