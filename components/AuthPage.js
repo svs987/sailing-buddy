@@ -40,7 +40,7 @@ const AuthPage = ({ navigation }) => {
                 <Text style={styles.title}>Welcome to Sailing Buddy</Text>
             </View>
             <View>
-                <Text>Please enter the authorisation code sent to you by your yacht club</Text>
+                <Text style={styles.inputBoxHeading}>Please enter the authorisation code sent to you by your yacht club</Text>
                 <TextInput
                     placeholder="Authorisation code"
                     style={styles.inputbox}
@@ -55,7 +55,7 @@ const AuthPage = ({ navigation }) => {
                 </View>
             }
             <View>
-                <Text>Please review the terms and conditions</Text>
+                <Text style={styles.inputBoxHeading}>Please review the terms and conditions</Text>
                 <Button onPress={() => {
                     console.log('T&C button pressed');
                     return navigation.navigate('TandC')
@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     body: {
         flex: 1,
         paddingHorizontal: 20,
-        justifyContent: 'space-around',
 
     },
     title: {
@@ -102,6 +101,10 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1
     },
+    inputBoxHeading: {
+		paddingVertical: 10,
+	},
+
     authorisationError: {
         color: 'red',
     }
