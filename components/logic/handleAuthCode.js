@@ -34,4 +34,4 @@ const handleAuthCode = async (authorisationCode) => {
 
 };
 
-export { handleAuthCode };
+export { handleAuthCode, checkAuthCode };

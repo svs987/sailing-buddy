@@ -1,9 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { TextInput, Button } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import { AuthPage } from './AuthPage';
-import { handleAuthCode} from './logic/handleAuthCode';
+import { Button } from 'react-native';
 
 /**
  * 
