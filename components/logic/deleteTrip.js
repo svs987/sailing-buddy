@@ -1,42 +1,40 @@
 import Constants from 'expo-constants';
-import {getAuthorisationCode} from './GetAuthorisationCode';
+import { getAuthorisationCode } from './GetAuthorisationCode';
 import { getAccessToken } from './getAccessToken';
 
 
-const deleteTrip = (theId, setLoading) => {
-    console.log('Deleting', theId);
-    var jwtBearerToken = null;
+const deleteTrip = async (theId, setLoading) => {
+    try {
+        console.log('Deleting...', theId);
+        var jwtBearerToken = null;
 
-    getAccessToken()
-    .then(accessResponse => {
-        console.log("Turning access token to json... ");
-        return accessResponse.json();
-    })
-    .then(accessData => {
-        console.log('Access data is: ', accessData);
+        const accessResponse = await getAccessToken();
+        console.log("Deleting...Turning access token to json... ");
+        const accessData = await accessResponse.json();
+        console.log('Deleting...Got Access data');
         jwtBearerToken = accessData.access_token;
-        return getAuthorisationCode();
-    })
-        .then(authCode => {
-            console.log('In deleteTrip. authCode: ', authCode);
-            const requestOptions = {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json',
+        const authCode = await getAuthorisationCode();
+        console.log('Deleting...In deleteTrip. Got authCode ');
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
                 'authorization': 'Bearer ' + jwtBearerToken,
             },
-                body: JSON.stringify({
-                    id: theId,
-                    authorisationCode: authCode,
-                })
-            };
-            console.log('requestOptions:', JSON.stringify({ requestOptions }));
-            return fetch(Constants.manifest.extra.apiUrl, requestOptions)
-
-
-        })
-        .then(response => response.json())
-        .then(() => setLoading(true))						//force a reload of the list
-        .catch(err => console.log('There was an error:' + err)); //return to the home page once the response has been received.
+            body: JSON.stringify({
+                id: theId,
+                authorisationCode: authCode,
+            })
+        };
+        const response = await fetch(Constants.manifest.extra.apiUrl, requestOptions);
+        await response.json();
+        setLoading(true);						//force a reload of the list
+        console.log('Deleting...call returned successfully');
+    }
+    catch {
+        console.log('Deleting...There was an error:');
+        alert('Item could not be deleted. Please check your network connections and try again later');
+    } //return to the home page once the response has been received.
 
 };
 

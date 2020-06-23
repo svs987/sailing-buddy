@@ -34,7 +34,6 @@ const ViewInvitesPage = ({ onChoose }) => {
 				return accessResponse.json();
 			})
 			.then(accessData => {
-				console.log('Access data is: ', accessData);
 				return getInfo(Constants.manifest.extra.apiUrl, 'authorization', 'Bearer ' + accessData.access_token)
 			})
 			.then(response => response.json())
@@ -44,8 +43,11 @@ const ViewInvitesPage = ({ onChoose }) => {
 				setLoading(false);
 				console.log('Data:', data);
 			})
-			.catch((error) => { console.log(error) })
-
+			.catch((error) => { 
+				console.log('Error in ViewInvitesPage.useEffect', error);
+				alert('Cannot access trips list. Please check your network connection and try again');
+			})
+ 
 	}, []); // the blank array param means that this will not be reloaded because of setting the state
 
 

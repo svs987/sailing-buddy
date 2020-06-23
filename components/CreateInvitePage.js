@@ -30,43 +30,65 @@ const CreateInvitePage = ({ navigation }) => {
 		setDate(currentDate);
 	};
 
-	const sendInvitation = (authorisationCode) => {
-		console.log('sending Invitation');
-		getAccessToken()
-			.then(accessResponse => {
-				console.log("Turning access token to json... ");
-				return accessResponse.json();
+	const sendInvitation = async (authorisationCode) => {
+		try {
+			var res = false;
+			console.log('sending Invitation');
+			const accessResponse = await getAccessToken();
+			console.log("Turning access token to json... ");
+			const accessData = await accessResponse.json();
+			console.log('Access data retrieved');
+			const requestOptions = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'authorization': 'Bearer ' + accessData.access_token
+				},
+				body: JSON.stringify({
+					skipperName: skipperName,
+					vesselName: vesselName,
+					contactDetails: contactDetails,
+					date: date,
+					tripDescription: tripDescription,
+					authorisationCode: authorisationCode,
+				})
+			};
+			const response = await fetch(Constants.manifest.extra.apiUrl, requestOptions);
+			console.log('response received');
+			res = true;
+			await response.json();
+			return new Promise((resolve, reject) => {
+				resolve(res);
+			}
+			)
+		}
+		catch{
+			console.log('Error in CreateInvitePage.sendInvitation', error);
+			return new Promise((resolve, reject) => {
+				reject(`Error in CreateInvitePage.sendInvitation${error}`);
 			})
-			.then(accessData => {
-				console.log('Access data is: ', accessData);
-				const requestOptions = {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						'authorization': 'Bearer ' + accessData.access_token
-					},
-					body: JSON.stringify({
-						skipperName: skipperName,
-						vesselName: vesselName,
-						contactDetails: contactDetails,
-						date: date,
-						tripDescription: tripDescription,
-						authorisationCode: authorisationCode,
-					})
-				};
-				return fetch(Constants.manifest.extra.apiUrl, requestOptions);
-			})
-			.then(response => response.json())
-			.catch(err => console.log('There was an error:' + err)); //return to the home page once the response has been received.
+		}
+
 
 	};
 
 
 	const submit = () => {
 		getAuthorisationCode()
-			.then(authCode => sendInvitation(authCode))
-			.then(() => navigation.navigate('MainSkipper', { reload: true }))
-			.catch(err => console.log('There was an error:' + err));
+			.then(authCode => {
+				console.log('Got authCode, sending invitation');
+				return sendInvitation(authCode);
+			})
+			.then((res) => {
+				console.log('res is:', res);
+				if (res) {
+					navigation.navigate('MainSkipper', { reload: true })
+				}
+			})
+			.catch((error) => {
+				console.log('Error in CreateInvitePage.submit', error);
+				alert('Cannot save trip. Please check your network connection and try again');
+			})
 
 	};
 

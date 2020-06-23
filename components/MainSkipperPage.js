@@ -40,14 +40,11 @@ const MainSkipperPage = ({ navigation, route }) => {
                     return accessResponse.json();
                 })
                 .then(accessData => {
-                    console.log('Access data is: ', accessData);
-                    jwtBearerToken = accessData.access_token;
+                      jwtBearerToken = accessData.access_token;
                     return getAuthorisationCode();
                 }
                 )
                 .then(authCode => {
-                    console.log('In useEffect. authCode: ', authCode);
-                    console.log('jwtBearerToken: ', jwtBearerToken);
                     return getInfo(Constants.manifest.extra.apiUrl, 'authorization', 'Bearer ' + jwtBearerToken, authCode);
 
                 })
@@ -63,7 +60,10 @@ const MainSkipperPage = ({ navigation, route }) => {
                     route.params = false;
                     console.log('Data:', data);
                 })
-                .catch((error) => { console.log(error) })
+                .catch((error) => { 
+                    console.log('Error in MainSkipperPage.useEffect', error);
+                    alert('Cannot access skipper trips. Please check your network connection and try again');
+                })
         }
 
     });

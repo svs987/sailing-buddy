@@ -4,7 +4,6 @@ is identical, only the endpoint is different
 */
 
 const getInfo = (url, authorisationKey, authorisationValue, authCode) => {
-    console.log('in getInfo. AuthCode is: ', authCode);
     if (authCode) {
         url += '?AuthCode=' + authCode;
     }
@@ -15,8 +14,6 @@ const getInfo = (url, authorisationKey, authorisationValue, authCode) => {
         }
     };
     requestOptions.headers[authorisationKey] = authorisationValue;
-    console.log('in getInfo. url is: ', url);
-    console.log('requestOptions are: ', requestOptions);
 
     return fetch(url, requestOptions);
 

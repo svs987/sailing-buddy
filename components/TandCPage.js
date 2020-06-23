@@ -9,9 +9,20 @@ const TandCPage = ({navigation}) => {
     return (
         <View style={styles.container}>
             <ScrollView style={styles.body}>
-                <Text> {`Acceptable use
+                <Text> {`General
+This app is for the use of members of yacht clubs for the purpose of enabling boat owners (aka skippers) to find crew for sailing trips.
 
-5.1 You must not:
+The app is provided as is and neither Stonivale Ltd nor the participating yacht clubs assume any responsibility for the accuracy of the information.
+
+In particular, users of the app should note that yachting is a potentially hazardous activity. Users should not that the presence of a user or a trip invitation on the app does not represent an endorsement of either the competence of the user or the sea-worthiness of the vessel.
+
+Sailing is a potentially hazardous activity - users must make their own arrangements to make sure they understand the level of risk that they are undertaking before accepting any invitation through this app or by any other means. 
+
+This app is intended for non-commercial use only. Trip invitations may be removed and user accounts disabled if it is discovered that users are using the app for commercial gain. Likewise, contact details shared by users of the app are for the purpose of arranging yachting trips only. Trip invitations may be removed and user accounts may be disabled if it is discovered that user contact details are being used for any other reason.
+
+1 Acceptable use
+
+1.1 You must not:
 
 (a) use our app in any way or take any action that causes, or may cause, damage to the app or impairment of the performance, availability or accessibility of the app;
 
@@ -25,27 +36,27 @@ const TandCPage = ({navigation}) => {
 
 (f) use data collected from our app for any direct marketing activity (including without limitation email marketing, SMS marketing, telemarketing and direct mailing).
 
-5.2 You must not use data collected from our app to contact individuals, companies or other persons or entities for any reason other than for the purpose of arranging sailing trips.
+1.2 You must not use data collected from our app to contact individuals, companies or other persons or entities for any reason other than for the purpose of arranging sailing trips.
 
-5.3 You must ensure that all the information you supply to us through our app, or in relation to our app, is true, accurate, current, complete and non-misleading.
+1.3 You must ensure that all the information you supply to us through our app, or in relation to our app, is true, accurate, current, complete and non-misleading.
 
-Registration and accounts
+2 Registration and accounts
 
-6.1 If you are a member of a Yacht Club that has signed up to use the app, you may use the app by requesting an Authorisation Code from your Yacht Club.
+2.1 If you are a member of a Yacht Club that has signed up to use the app, you may use the app by requesting an Authorisation Code from your Yacht Club.
 
-6.2 You must notify either us or your Yacht Club immediately if you become aware of any unauthorised use of your authorisation code.
+2.2 You must notify either us or your Yacht Club immediately if you become aware of any unauthorised use of your authorisation code.
 
-6.3 You must not use any other person's authorisation code to access the app, unless you have that person's express permission to do so.
+2.3 You must not use any other person's authorisation code to access the app, unless you have that person's express permission to do so.
 
-User login details
+3 Authorisation Codes
 
-7.1 Once you have requested access to the app from your Yacht Club you will be supplied with a unigue authorisation code. You will be asked to enter this code the first time that you use the app.
+3.1 Once you have requested access to the app from your Yacht Club you will be supplied with a unigue authorisation code. You will be asked to enter this code the first time that you use the app.
 
-7.5 You are responsible for any activity on our app arising out of any failure to keep your authorisation code confidential, and may be held liable for any losses arising out of such a failure.
+3.3 You are responsible for any activity on our app arising out of any failure to keep your authorisation code confidential, and may be held liable for any losses arising out of such a failure.
 
-Cancellation and suspension of account
+4 Cancellation and suspension of account
 
-8.1 We may:
+4.1 We may:
 
 (a) suspend your access to the app;
 
@@ -55,31 +66,31 @@ Cancellation and suspension of account
 
 at any time in our sole discretion without notice or explanation.
 
-8.2 You may cancel your authorisation code on our app by making a request to ourselves or to your Yacht Club that your details be removed from the app.
+4.2 You may cancel your authorisation code on our app by making a request to ourselves or to your Yacht Club that your details be removed from the app.
 
-Your content: licence
+5 Your content: licence
 
-9.1 In these terms and conditions, "your content" means all works and materials (including without limitation text, graphics, images, audio material, video material, audio-visual material, scripts, software and files) that you submit to us or our app for storage or publication on, processing by, or transmission via, our app.
+5.1 In these terms and conditions, "your content" means all works and materials (including without limitation text, graphics, images, audio material, video material, audio-visual material, scripts, software and files) that you submit to us or our app for storage or publication on, processing by, or transmission via, our app.
 
-9.2 You grant to us a worldwide, irrevocable, non-exclusive, royalty-free licence to use, reproduce, store, adapt, publish, translate and distribute your content in any existing or future media in relation to this app and any successor app.
+5.2 You grant to us a worldwide, irrevocable, non-exclusive, royalty-free licence to use, reproduce, store, adapt, publish, translate and distribute your content in any existing or future media in relation to this app and any successor app.
 
-9.3 You grant to us the right to sub-license the rights licensed under Section 9.2.
+5.3 You grant to us the right to sub-license the rights licensed under Section 5.2.
 
-9.4 You grant to us the right to bring an action for infringement of the rights licensed under Section 9.2.
+5.4 You grant to us the right to bring an action for infringement of the rights licensed under Section 5.2.
 
-9.5 You hereby waive all your moral rights in your content to the maximum extent permitted by applicable law; and you warrant and represent that all other moral rights in your content have been waived to the maximum extent permitted by applicable law.
+5.5 You hereby waive all your moral rights in your content to the maximum extent permitted by applicable law; and you warrant and represent that all other moral rights in your content have been waived to the maximum extent permitted by applicable law.
 
-9.6 You may edit your content to the extent permitted using the editing functionality made available on our app.
+5.6 You may edit your content to the extent permitted using the editing functionality made available on our app.
 
-9.7 Without prejudice to our other rights under these terms and conditions, if you breach any provision of these terms and conditions in any way, or if we reasonably suspect that you have breached these terms and conditions in any way, we may delete, unpublish or edit any or all of your content.
+5.7 Without prejudice to our other rights under these terms and conditions, if you breach any provision of these terms and conditions in any way, or if we reasonably suspect that you have breached these terms and conditions in any way, we may delete, unpublish or edit any or all of your content.
 
-Your content: rules
+6 Your content: rules
 
-10.1 You warrant and represent that your content will comply with these terms and conditions.
+6.1 You warrant and represent that your content will comply with these terms and conditions.
 
-10.2 Your content must not be illegal or unlawful, must not infringe any person's legal rights, and must not be capable of giving rise to legal action against any person (in each case in any jurisdiction and under any applicable law).
+6.2 Your content must not be illegal or unlawful, must not infringe any person's legal rights, and must not be capable of giving rise to legal action against any person (in each case in any jurisdiction and under any applicable law).
 
-10.3 Your content, and the use of your content by us in accordance with these terms and conditions, must not:
+6.3 Your content, and the use of your content by us in accordance with these terms and conditions, must not:
 
 (a) be libellous or maliciously false;
 
@@ -117,9 +128,9 @@ f) constitute an incitement to commit a crime, instructions for the commission o
 
 (r) cause annoyance, inconvenience or needless anxiety to any person.
 
-Limited warranties
+7 Limited warranties
 
-11.1 We do not warrant or represent:
+7.1 We do not warrant or represent:
 
 (a) the completeness or accuracy of the information published on our app;
 
@@ -127,13 +138,13 @@ Limited warranties
 
 (c) that the app or any service on the app will remain available.
 
-11.2 We reserve the right to discontinue or alter any or all of our app services, and to stop publishing our app, at any time in our sole discretion without notice or explanation; and save to the extent expressly provided otherwise in these terms and conditions, you will not be entitled to any compensation or other payment upon the discontinuance or alteration of any app services, or if we stop publishing the app.
+7.2 We reserve the right to discontinue or alter any or all of our app services, and to stop publishing our app, at any time in our sole discretion without notice or explanation; and save to the extent expressly provided otherwise in these terms and conditions, you will not be entitled to any compensation or other payment upon the discontinuance or alteration of any app services, or if we stop publishing the app.
 
-11.3 To the maximum extent permitted by applicable law and subject to Section 12.1, we exclude all representations and warranties relating to the subject matter of these terms and conditions, our app and the use of our app.
+7.3 To the maximum extent permitted by applicable law and subject to Section 8.1, we exclude all representations and warranties relating to the subject matter of these terms and conditions, our app and the use of our app.
 
-Limitations and exclusions of liability
+8 Limitations and exclusions of liability
 
-12.1 Nothing in these terms and conditions will:
+8.1 Nothing in these terms and conditions will:
 
 (a) limit or exclude any liability for death or personal injury resulting from negligence;
 
@@ -143,27 +154,27 @@ Limitations and exclusions of liability
 
 (d) exclude any liabilities that may not be excluded under applicable law.
 
-12.2 The limitations and exclusions of liability set out in this Section 12 and elsewhere in these terms and conditions:
+8.2 The limitations and exclusions of liability set out in this Section 8 and elsewhere in these terms and conditions:
 
-(a) are subject to Section 12.1; and
+(a) are subject to Section 8.1; and
 
 (b) govern all liabilities arising under these terms and conditions or relating to the subject matter of these terms and conditions, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty, except to the extent expressly provided otherwise in these terms and conditions.
 
-12.3 To the extent that our app and the information and services on our app are provided free of charge, we will not be liable for any loss or damage of any nature.
+8.3 To the extent that our app and the information and services on our app are provided free of charge, we will not be liable for any loss or damage of any nature.
 
-12.4 We will not be liable to you in respect of any losses arising out of any event or events beyond our reasonable control.
+8.4 We will not be liable to you in respect of any losses arising out of any event or events beyond our reasonable control.
 
-12.5 We will not be liable to you in respect of any business losses, including (without limitation) loss of or damage to profits, income, revenue, use, production, anticipated savings, business, contracts, commercial opportunities or goodwill.
+8.5 We will not be liable to you in respect of any business losses, including (without limitation) loss of or damage to profits, income, revenue, use, production, anticipated savings, business, contracts, commercial opportunities or goodwill.
 
-12.6 We will not be liable to you in respect of any loss or corruption of any data, database or software.
+8.6 We will not be liable to you in respect of any loss or corruption of any data, database or software.
 
-12.7 We will not be liable to you in respect of any special, indirect or consequential loss or damage.
+8.7 We will not be liable to you in respect of any special, indirect or consequential loss or damage.
 
-12.8 You accept that we have an interest in limiting the personal liability of our officers and employees and, having regard to that interest, you acknowledge that we are a limited liability entity; you agree that you will not bring any claim personally against our officers or employees in respect of any losses you suffer in connection with the app or these terms and conditions (this will not, of course, limit or exclude the liability of the limited liability entity itself for the acts and omissions of our officers and employees).
+8.8 You accept that we have an interest in limiting the personal liability of our officers and employees and, having regard to that interest, you acknowledge that we are a limited liability entity; you agree that you will not bring any claim personally against our officers or employees in respect of any losses you suffer in connection with the app or these terms and conditions (this will not, of course, limit or exclude the liability of the limited liability entity itself for the acts and omissions of our officers and employees).
 
-Breaches of these terms and conditions
+9 Breaches of these terms and conditions
 
-13.1 Without prejudice to our other rights under these terms and conditions, if you breach these terms and conditions in any way, or if we reasonably suspect that you have breached these terms and conditions in any way, we may:
+9.1 Without prejudice to our other rights under these terms and conditions, if you breach these terms and conditions in any way, or if we reasonably suspect that you have breached these terms and conditions in any way, we may:
 
 (a) send you one or more formal warnings;
 
@@ -179,62 +190,51 @@ Breaches of these terms and conditions
 
 (g) suspend or delete your account on our app.
 
-13.2 Where we suspend or prohibit or block your access to our app or a part of our app, you must not take any action to circumvent such suspension or prohibition or blocking.
+9.2 Where we suspend or prohibit or block your access to our app or a part of our app, you must not take any action to circumvent such suspension or prohibition or blocking.
 
-Variation
+10 Variation
 
-14.1 We may revise these terms and conditions from time to time.
+10.1 We may revise these terms and conditions from time to time.
 
-14.2 The revised terms and conditions shall apply to the use of our app from the date of publication of the revised terms and conditions on the app, and you hereby waive any right you may otherwise have to be notified of, or to consent to, revisions of these terms and conditions.
+10.2 The revised terms and conditions shall apply to the use of our app from the date of publication of the revised terms and conditions on the app, and you hereby waive any right you may otherwise have to be notified of, or to consent to, revisions of these terms and conditions.
 
-Assignment
+11 Assignment
 
-15.1 You hereby agree that we may assign, transfer, sub-contract or otherwise deal with our rights and/or obligations under these terms and conditions.
+11.1 You hereby agree that we may assign, transfer, sub-contract or otherwise deal with our rights and/or obligations under these terms and conditions.
 
-15.2 You may not without our prior written consent assign, transfer, sub-contract or otherwise deal with any of your rights and/or obligations under these terms and conditions.
+11.2 You may not without our prior written consent assign, transfer, sub-contract or otherwise deal with any of your rights and/or obligations under these terms and conditions.
 
-Severability
+12 Severability
 
-16.1 If a provision of these terms and conditions is determined by any court or other competent authority to be unlawful and/or unenforceable, the other provisions will continue in effect.
+12.1 If a provision of these terms and conditions is determined by any court or other competent authority to be unlawful and/or unenforceable, the other provisions will continue in effect.
 
-16.2 If any unlawful and/or unenforceable provision of these terms and conditions would be lawful or enforceable if part of it were deleted, that part will be deemed to be deleted, and the rest of the provision will continue in effect.
+12.2 If any unlawful and/or unenforceable provision of these terms and conditions would be lawful or enforceable if part of it were deleted, that part will be deemed to be deleted, and the rest of the provision will continue in effect.
 
-Third party rights
-17.1 A contract under these terms and conditions is for our benefit and your benefit, and is not intended to benefit or be enforceable by any third party.
+13 Third party rights
 
-17.2 The exercise of the parties' rights under a contract under these terms and conditions is not subject to the consent of any third party.
+13.1 A contract under these terms and conditions is for our benefit and your benefit, and is not intended to benefit or be enforceable by any third party.
 
-Entire agreement
-18.1 Subject to Section 12.1, these terms and conditions, together with our privacy and cookies policy, shall constitute the entire agreement between you and us in relation to your use of our app and shall supersede all previous agreements between you and us in relation to your use of our app.
+13.2 The exercise of the parties' rights under a contract under these terms and conditions is not subject to the consent of any third party.
 
-Law and jurisdiction
+14 Entire agreement
 
-19.1 These terms and conditions shall be governed by and construed in accordance with English law.
+14.1 Subject to Section 8.1, these terms and conditions, together with our privacy and cookies policy, shall constitute the entire agreement between you and us in relation to your use of our app and shall supersede all previous agreements between you and us in relation to your use of our app.
 
-19.2 Any disputes relating to these terms and conditions shall be subject to the non-exclusive jurisdiction of the courts of England and Wales.
+15 Law and jurisdiction
 
-Statutory and regulatory disclosures
+15.1 These terms and conditions shall be governed by and construed in accordance with English law.
 
-20.1 The Forum for the Future is a registered charity and a company limited by guarantee, registered in England and Wales.
+15.2 Any disputes relating to these terms and conditions shall be subject to the non-exclusive jurisdiction of the courts of England and Wales.
 
-20.2  Our registered address is: Overseas House, 19-23 Ironmonger Row, London, EC1V 3QN,.
+16 Statutory and regulatory disclosures
 
-20.3 We are registered as UK. Charity No. 1040519.
+16.1 Stonivale Ltd is a Limited Company, registered in England and Wales.
 
-20.4  We are registered as a company limited by guarantee: Company No. 2959712.
+16.2  We are registered as a company limited by guarantee: Company No. 08158116.
 
-20.4 Our VAT number is VAT Reg. No. GB 186 2230 12
+17 Our details
 
-Our details
-21.1 You can contact us:
-
-(a) by post, to the postal address given above;
-
-(b) using our app contact form;
-
-(c) by telephone, on +44 (0)20 7324 3630; or
-
-(d) by email, using info@forumforthefuture.org`}
+17.1 You can contact us by email, using info@stonivale..co.uk`}
 
 
  </Text>

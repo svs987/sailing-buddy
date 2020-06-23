@@ -27,13 +27,18 @@ const AppContainer = () => {
     getAuthorisationCode()
       .then(authCode => {
         console.log('In useEffect. authCode: ', authCode);
-        return checkAuthCode(authCode)
+        if (authCode) {
+          return checkAuthCode(authCode);
+      } else {
+        return false;
+      }
       })
       .then(res => {
         if (res) {
           dispatch({ type: 'SET_AUTH_PAGE_COMPLETED' }); //We can move on to the main app without showing the auth page
-          setLoading(false);
+          
         }
+        setLoading(false);
       })
       .catch(err => { console.log("Error checking auth code: ", err) });
 
