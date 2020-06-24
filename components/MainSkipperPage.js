@@ -35,12 +35,8 @@ const MainSkipperPage = ({ navigation, route }) => {
         if (isLoading || (route && route.params && route.params?.reload)) {
             console.log("Fetching skipper invites...");
             getAccessToken()
-                .then(accessResponse => {
-                    console.log("Turning access token to json... ");
-                    return accessResponse.json();
-                })
-                .then(accessData => {
-                      jwtBearerToken = accessData.access_token;
+                .then(accessToken => {
+                    jwtBearerToken = accessToken;
                     return getAuthorisationCode();
                 }
                 )
@@ -60,7 +56,7 @@ const MainSkipperPage = ({ navigation, route }) => {
                     route.params = false;
                     console.log('Data:', data);
                 })
-                .catch((error) => { 
+                .catch((error) => {
                     console.log('Error in MainSkipperPage.useEffect', error);
                     alert('Cannot access skipper trips. Please check your network connection and try again');
                 })

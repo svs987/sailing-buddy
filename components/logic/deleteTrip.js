@@ -8,11 +8,7 @@ const deleteTrip = async (theId, setLoading) => {
         console.log('Deleting...', theId);
         var jwtBearerToken = null;
 
-        const accessResponse = await getAccessToken();
-        console.log("Deleting...Turning access token to json... ");
-        const accessData = await accessResponse.json();
-        console.log('Deleting...Got Access data');
-        jwtBearerToken = accessData.access_token;
+        jwtBearerToken = await getAccessToken();
         const authCode = await getAuthorisationCode();
         console.log('Deleting...In deleteTrip. Got authCode ');
         const requestOptions = {

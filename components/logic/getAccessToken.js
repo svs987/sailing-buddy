@@ -1,6 +1,6 @@
 import Constants from 'expo-constants';
 
-const getAccessToken = () => {
+const getAccessToken = async () => {
     console.log('in getAccessToken. ');
     const url = Constants.manifest.extra.getAccessTokenUrl;
 
@@ -14,9 +14,12 @@ const getAccessToken = () => {
     };
      console.log('in getAccessToken. url is: ', url);
     console.log('requestOptions are: ', requestOptions);
+    const accessResponse = await fetch(url, requestOptions);
+    console.log("Turning access token to json... ");
+    const accessData = await accessResponse.json();
+    console.log('Access data retrieved');
 
-    return fetch(url, requestOptions);
-
+    return accessData.access_token;
 };
 
 export { getAccessToken };

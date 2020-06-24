@@ -29,12 +29,8 @@ const ViewInvitesPage = ({ onChoose }) => {
 	useEffect(() => {
 		console.log("Fetching skipper invites...");
 		getAccessToken()
-			.then(accessResponse => {
-				console.log("Turning access token to json... ");
-				return accessResponse.json();
-			})
-			.then(accessData => {
-				return getInfo(Constants.manifest.extra.apiUrl, 'authorization', 'Bearer ' + accessData.access_token)
+			.then(accessToken => {
+				return getInfo(Constants.manifest.extra.apiUrl, 'authorization', 'Bearer ' + accessToken)
 			})
 			.then(response => response.json())
 			.then(data => {

@@ -34,15 +34,12 @@ const CreateInvitePage = ({ navigation }) => {
 		try {
 			var res = false;
 			console.log('sending Invitation');
-			const accessResponse = await getAccessToken();
-			console.log("Turning access token to json... ");
-			const accessData = await accessResponse.json();
-			console.log('Access data retrieved');
+			const accessToken = await getAccessToken();
 			const requestOptions = {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					'authorization': 'Bearer ' + accessData.access_token
+					'authorization': 'Bearer ' + accessToken
 				},
 				body: JSON.stringify({
 					skipperName: skipperName,
