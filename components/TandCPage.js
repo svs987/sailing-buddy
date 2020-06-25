@@ -14,9 +14,8 @@ This app is for the use of members of yacht clubs for the purpose of enabling bo
 
 The app is provided as is and neither Stonivale Ltd nor the participating yacht clubs assume any responsibility for the accuracy of the information.
 
-In particular, users of the app should note that yachting is a potentially hazardous activity. Users should not that the presence of a user or a trip invitation on the app does not represent an endorsement of either the competence of the user or the sea-worthiness of the vessel.
-
-Sailing is a potentially hazardous activity - users must make their own arrangements to make sure they understand the level of risk that they are undertaking before accepting any invitation through this app or by any other means. 
+In particular, users of the app should note that yachting is a potentially hazardous activity. The presence of a user or a trip invitation on the app does not represent any endorsement of either the competence of the user or the sea-worthiness of the vessel.
+Users must make their own arrangements to make sure they understand the level of risk that they are undertaking before accepting any invitation through this app or by any other means. 
 
 This app is intended for non-commercial use only. Trip invitations may be removed and user accounts disabled if it is discovered that users are using the app for commercial activities. 
 
