@@ -18,7 +18,9 @@ In particular, users of the app should note that yachting is a potentially hazar
 
 Sailing is a potentially hazardous activity - users must make their own arrangements to make sure they understand the level of risk that they are undertaking before accepting any invitation through this app or by any other means. 
 
-This app is intended for non-commercial use only. Trip invitations may be removed and user accounts disabled if it is discovered that users are using the app for commercial gain. Likewise, contact details shared by users of the app are for the purpose of arranging yachting trips only. Trip invitations may be removed and user accounts may be disabled if it is discovered that user contact details are being used for any other reason.
+This app is intended for non-commercial use only. Trip invitations may be removed and user accounts disabled if it is discovered that users are using the app for commercial activities. 
+
+Contact details shared by users of the app are for the purpose of arranging yachting trips only. Trip invitations may be removed and user accounts may be disabled if it is discovered that user contact details are being used for any other reason.
 
 1 Acceptable use
 
@@ -44,15 +46,15 @@ This app is intended for non-commercial use only. Trip invitations may be remove
 
 2.1 If you are a member of a Yacht Club that has signed up to use the app, you may use the app by requesting an Authorisation Code from your Yacht Club.
 
-2.2 You must notify either us or your Yacht Club immediately if you become aware of any unauthorised use of your authorisation code.
+2.2 You must notify either us or your Yacht Club immediately if you become aware of any unauthorised use of your Authorisation Code.
 
-2.3 You must not use any other person's authorisation code to access the app, unless you have that person's express permission to do so.
+2.3 You must not use any other person's Authorisation Code to access the app, unless you have that person's express permission to do so.
 
 3 Authorisation Codes
 
-3.1 Once you have requested access to the app from your Yacht Club you will be supplied with a unigue authorisation code. You will be asked to enter this code the first time that you use the app.
+3.1 Once you have requested access to the app from your Yacht Club you will be supplied with a unigue Authorisation Code. You will be asked to enter this code the first time that you use the app.
 
-3.3 You are responsible for any activity on our app arising out of any failure to keep your authorisation code confidential, and may be held liable for any losses arising out of such a failure.
+3.3 You are responsible for any activity on our app arising out of any failure to keep your Authorisation Code confidential, and may be held liable for any losses arising out of such a failure.
 
 4 Cancellation and suspension of account
 
