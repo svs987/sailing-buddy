@@ -7,6 +7,14 @@ import { Button } from 'react-native';
  */
 const HomePage = ({navigation}) => {
 
+	React.useLayoutEffect(() => {
+		navigation.setOptions({
+		  headerRight: () => (
+			<Button onPress={() => navigation.navigate('Info')} title="Info" />
+		  ),
+		});
+	  }, [navigation]);
+	
 
 	return (
 		<View style={styles.container}>

@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { CreateInvitePage } from './CreateInvitePage';
 import { HomePage } from './HomePage';
 import { AuthPage } from './AuthPage';
 import { TandCPage } from './TandCPage';
 import { ViewInvitesPage } from './ViewInvitesPage';
 import { MainSkipperPage } from './MainSkipperPage';
+import { InfoPage } from './InfoPage';
+import { PrivacyPage } from './PrivacyPage';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -29,14 +31,14 @@ const AppContainer = () => {
         console.log('In useEffect. authCode: ', authCode);
         if (authCode) {
           return checkAuthCode(authCode);
-      } else {
-        return false;
-      }
+        } else {
+          return false;
+        }
       })
       .then(res => {
         if (res) {
           dispatch({ type: 'SET_AUTH_PAGE_COMPLETED' }); //We can move on to the main app without showing the auth page
-          
+
         }
         setLoading(false);
       })
@@ -63,7 +65,9 @@ const AppContainer = () => {
             <Stack.Screen
               name="Authorise"
               component={AuthPage}
-              options={{ title: 'SailingBuddy' + Constants.manifest.extra.environment }}
+              options={{
+                title: 'SailingBuddy' + Constants.manifest.extra.environment
+              }}
             />
             <Stack.Screen
               name="TandC"
@@ -78,8 +82,10 @@ const AppContainer = () => {
               <Stack.Screen
                 name="Home"
                 component={HomePage}
-                options={{ title: 'SailingBuddy' + Constants.manifest.extra.environment }}
-              />
+                options={({ navigation, route }) => ({
+                  title: 'Sailing Buddy',
+                })}
+                      />
               <Stack.Screen
                 name="TandC"
                 component={TandCPage}
@@ -100,7 +106,17 @@ const AppContainer = () => {
                 component={MainSkipperPage}
                 options={{ title: 'Skipper' }}
               />
-            </Stack.Navigator>
+             <Stack.Screen
+                name="Info"
+                component={InfoPage}
+                options={{ title: 'Information' }}
+              />
+             <Stack.Screen
+                name="Privacy"
+                component={PrivacyPage}
+                options={{ title: 'Privacy Policy' }}
+              />
+           </Stack.Navigator>
           </NavigationContainer>
         );
     }
