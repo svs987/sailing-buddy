@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     titleBox: {
-        paddingBottom: 20,
+        paddingVertical: 20,
     },
     body: {
         flex: 1,
