@@ -12,6 +12,9 @@ import { text_truncate } from './logic/TextTruncate';
 const InviteLine = (props) => {
 	const [show, setShow] = React.useState(false);
 	const [lines, setLines] = React.useState(1);
+	const months = [
+		'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+	];
 
 	const theDate = new Date(props.item.date);
 
@@ -25,10 +28,26 @@ const InviteLine = (props) => {
 		}
 	};
 
+	const shortDateText = (date) => {
+		var month;
+		//	const month = new Intl.DateTimeFormat('default', { month: 'short' }).format(date);
+		if (Platform.OS === 'ios') {
+			month = date.toLocaleDateString('default', { month: 'short' });
+			console.log('iOS');
+		}
+		else {
+			console.log('Android');
+			month = months[date.getMonth()];
+
+		}
+		return month;
+
+	}
+
 	const handleEmail = (url, text) => {
 		Linking.canOpenURL(url).then(supported => {
 			if (supported) {
-				Linking.openURL(encodeURI(url + '?subject=' + text_truncate(props.item.tripDescription,30)))
+				Linking.openURL(encodeURI(url + '?subject=' + text_truncate(props.item.tripDescription, 30)))
 					.then(response => {
 						console.log('Successfully opened url');
 					})
@@ -46,7 +65,7 @@ const InviteLine = (props) => {
 				onPress={onChange}>
 				<View style={styles.dateBox}>
 					<Text>{theDate.getDate()}</Text>
-					<Text>{theDate.toLocaleString('default', { month: 'short' })}</Text>
+					<Text>{shortDateText(theDate)}</Text>
 				</View>
 				<View style={{ flex: 1 }}>
 					<View style={styles.skipperVesselBox}>
