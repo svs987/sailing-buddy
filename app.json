@@ -24,7 +24,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.stonivale.sailingbuddy",
-      "buildNumber": "1.2.4",
+      "buildNumber": "1.2.6",
       "infoPlist": {
         "LSApplicationQueriesSchemes": [
           "mail",
@@ -40,7 +40,7 @@
     },
     "android": {
       "package": "com.stonivale.sailingbuddy",
-      "versionCode": 9
+      "versionCode": 11
     },
     "description": "This app allows skippers and crew from a sailing club to get together to go sailing. \nIcons made by Freepik from www.flaticon.com.\nWhat's new in this version:\n- Users have to authenticate before they can use the app.\n-Users have to accept Terms and Conditions.\nUsers can delete their own trips"
   }
