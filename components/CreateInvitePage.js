@@ -18,15 +18,9 @@ const CreateInvitePage = ({ navigation }) => {
 	const [contactDetails, onChangeContactDetails] = React.useState('');
 	const [tripDescription, onChangeTripDescription] = React.useState('');
 	const [date, setDate] = useState(new Date());
-	const [show, setShow] = useState(false);
-
-	const showDatepicker = () => {
-		setShow(true);
-	};
 
 	const onChange = (event, selectedDate) => {
 		const currentDate = selectedDate || date;
-		setShow(Platform.OS === 'ios');
 		setDate(currentDate);
 	};
 
