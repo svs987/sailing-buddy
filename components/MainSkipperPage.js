@@ -69,7 +69,9 @@ const MainSkipperPage = ({ navigation, route }) => {
 
     return (
         <View style={styles.container}>
-            <Button onPress={() => navigation.navigate('SkipperInvite')} title="Create New Trip" />
+             <View style={styles.button}>
+           <Button onPress={() => navigation.navigate('SkipperInvite')} title="Create New Trip" />
+           </View>
             {isLoading && (<Text>Fetching invites</Text>)}
 
             {!isLoading && (
@@ -88,9 +90,7 @@ const MainSkipperPage = ({ navigation, route }) => {
                 </View>
 
             )}
-            <View style={styles.backButton}>
-            </View>
-        </View>
+         </View>
     )
 
 }
@@ -116,6 +116,9 @@ const styles = StyleSheet.create({
     },
     backButton: {
         paddingBottom: 20,
+    },
+    button: {
+        paddingTop: 20,
     },
 
 });
